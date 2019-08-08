@@ -9,4 +9,5 @@ class User < ApplicationRecord
 
     has_many :known_languages
     has_many :languages, through: :known_languages
+    has_many :difficulties, through: :known_languages
 end
