@@ -7,5 +7,6 @@ module Types
         field :texts, [TextType], null: false
         field :translations, [TranslationType], null: false
         field :languages, [LanguageType], null: false
+        field :known_languages, [KnownLanguageType], null: false
     end
 end
