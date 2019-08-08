@@ -46,6 +46,7 @@ flag_text = Text.create(
 )
 
 flag_translation = Translation.create(
+    title: "Flag",
     content: flag_en,
     status: "approved",
     translator_id: matt.id,
