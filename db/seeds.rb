@@ -18,8 +18,8 @@ flag_kr = '기(旗, flag) 또는 깃발(문화어: 기발), 여괴(旟旝)는 �
 flag_en = 'A flag is a piece of fabric (most often rectangular or quadrilateral) with a distinctive design and colours. It is used as a symbol, a signalling device, or for decoration. The term flag is also used to refer to the graphic design employed, and flags have evolved into a general tool for rudimentary signalling and identification, especially in environments where communication is challenging (such as the maritime environment, where semaphore is used). The study of flags is known as "vexillology" from the Latin vexillum, meaning "flag" or "banner". National flags are patriotic symbols with widely varied interpretations that often include strong military associations because of their original and ongoing use for that purpose. Flags are also used in messaging, advertising, or for decorative purposes. Some military units are called "flags" after their use of flags. A flag (Arabic: لواء) is equivalent to a brigade in Arab countries. In Spain, a flag (Spanish: bandera) is a battalion-equivalent in the Spanish Legion. '
 
 matt = User.create(username: "m4thayus", first_name: "Matt", last_name: "Williams")
-
 seong = User.create(username: "seong", first_name: "성준", last_name: "신")
+mina = User.create(username: "mina", first_name: "민아", last_name: "박")
 
 en = Language.create(name: "English", short_name: "EN")
 kr = Language.create(name: "한국어", short_name: "한")
@@ -30,6 +30,9 @@ m_lang_en = KnownLanguage.create(user_id: matt.id, difficulty_id: intermediate.i
 m_lang_kr = KnownLanguage.create(user_id: matt.id, difficulty_id: intermediate.id, language_id: kr.id, vetted: false)
 
 s_lang_kr = KnownLanguage.create(user_id: seong.id, difficulty_id: intermediate.id, language_id: kr.id, vetted: true)
+
+mi_lang_en = KnownLanguage.create(user_id: mina.id, difficulty_id: intermediate.id, language_id: en.id, vetted: true)
+mi_lang_kr = KnownLanguage.create(user_id: mina.id, difficulty_id: intermediate.id, language_id: kr.id, vetted: true)
 
 flag_text = Text.create(
     title: "기", 
@@ -48,3 +51,5 @@ flag_translation = Translation.create(
     translator_id: matt.id,
     text_id: flag_text.id
 )
+
+flag_vote1 = Vote.create(up: true, user_id: mina.id, translation_id: flag_translation.id)
