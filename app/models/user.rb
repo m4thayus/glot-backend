@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_secure_password 
+
     has_many :translations, class_name: "Translation", foreign_key: "translator_id"
 
     has_many :texts, foreign_key: "creator_id"
@@ -10,4 +12,6 @@ class User < ApplicationRecord
     has_many :known_languages
     has_many :languages, through: :known_languages
     has_many :difficulties, through: :known_languages
+    
+    validates :username, presence: true, uniqueness: true
 end
