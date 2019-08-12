@@ -10,5 +10,11 @@ module Types
             Text.all
         end
 
+        field :translations, [TranslationType], null: true,
+        description: "Show all translations"
+
+        def translations
+            Translation.all
+        end
     end
 end
