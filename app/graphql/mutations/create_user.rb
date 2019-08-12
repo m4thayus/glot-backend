@@ -10,15 +10,22 @@ module Mutations
         argument :first_name, String, required: true
         argument :auth_provider, AuthProviderSignupData, required: false
 
-        type Types::UserType
+        field :token, String, null: true
+        field :user, Types::UserType, null: true
 
         def resolve(last_name: nil, first_name: nil, auth_provider: nil)
-            User.create!(
+            user = User.create!(
                 first_name: first_name,
                 last_name: last_name,
                 username: auth_provider&.[](:username)&.[](:username),
                 password: auth_provider&.[](:username)&.[](:password)
-            )
+            )       
+            crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
+            token = crypt.encrypt_and_sign("user-id:#{ user.id }")
+
+            context[:session][:token] = token
+
+            { user: user, token: token }
         end
     end
 end
