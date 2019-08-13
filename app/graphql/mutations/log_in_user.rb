@@ -23,7 +23,7 @@ module Mutations
 
             # context[:session][:token] = token
 
-            { user: user, token: token }
+            { token: token }
         end
     end
 end
