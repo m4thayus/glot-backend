@@ -11,10 +11,17 @@ module Types
         end
 
         field :translations, [TranslationType], null: true,
-        description: "Show all translations"
+        description: "Show all translations for current authenticated user"
 
         def translations
             context[:current_user].translations
+        end
+
+        field :me, UserType, null: true,
+        description: "Show the current authenticated user"
+
+        def me
+            context[:current_user]
         end
     end
 end
