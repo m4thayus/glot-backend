@@ -14,7 +14,7 @@ module Types
         description: "Show all translations"
 
         def translations
-            Translation.all
+            context[:current_user].translations
         end
     end
 end

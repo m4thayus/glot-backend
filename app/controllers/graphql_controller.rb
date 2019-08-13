@@ -6,7 +6,7 @@ class GraphqlController < ApplicationController
         context = {
             # Query context goes here, for example:
             # we need to provide session and current user
-            session: session,
+            # session: session,
             current_user: current_user
         }
         result = GlotBackendSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
@@ -21,10 +21,11 @@ class GraphqlController < ApplicationController
     # gets current user from token stored in the session
     def current_user
         # if we want to change the sign-in strategy, this is the place to do it
-        return unless session[:token]
+        return if request.headers['authorization'] == ''
 
+        auth = request.headers['authorization']
         crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
-        token = crypt.decrypt_and_verify session[:token]
+        token = crypt.decrypt_and_verify auth.split(' ')[1]
         user_id = token.gsub('user-id:', '').to_i
         User.find_by id: user_id
     rescue ActiveSupport::MessageVerifier::InvalidSignature
