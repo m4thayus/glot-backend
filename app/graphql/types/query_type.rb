@@ -11,10 +11,24 @@ module Types
         end
 
         field :translations, [TranslationType], null: true,
-        description: "Show all translations for current authenticated user"
+        description: "Show all translations for current authenticated user" do 
+            argument :text_id, Int, required: false
+        end
 
-        def translations
-            context[:current_user].translations
+        def translations(text_id: nil)
+            if text_id
+                translation = Translation.find_by(
+                    text_id: text_id,
+                    translator_id: context[:current_user].id
+                )
+                if translation
+                    [translation]
+                else
+                    nil
+                end
+            else
+                context[:current_user].translations
+            end
         end
 
         field :me, UserType, null: true,
