@@ -14,6 +14,7 @@ module Mutations
                 content: content,
                 translator_id: context[:current_user].id,
                 text_id: text_id,
+                status: 'pending'
             )
         end
     end
