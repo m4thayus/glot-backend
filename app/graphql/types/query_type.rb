@@ -37,5 +37,12 @@ module Types
         def me
             context[:current_user]
         end
+
+        field :languages, [LanguageType], null: true,
+        description: "Show all languages"
+
+        def languages
+            Language.all
+        end
     end
 end
