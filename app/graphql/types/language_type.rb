@@ -4,5 +4,9 @@ module Types
         field :name, String, null: false
         field :short_name, String, null: false
         field :difficulties, [DifficultyType], null: false
+
+        def difficulties
+            object.difficulties.uniq
+        end
     end
 end
