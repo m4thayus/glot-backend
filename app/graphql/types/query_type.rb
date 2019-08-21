@@ -13,9 +13,10 @@ module Types
         field :translations, [TranslationType], null: true,
         description: "Show all translations for current authenticated user" do 
             argument :text_id, Int, required: false
+            argument :status, String, required: false
         end
 
-        def translations(text_id: nil)
+        def translations(text_id: nil, status: nil)
             if text_id
                 translation = Translation.find_by(
                     text_id: text_id,
@@ -23,6 +24,15 @@ module Types
                 )
                 if translation
                     [translation]
+                else
+                    nil
+                end
+            elsif status
+                translations = Translation.find_all(
+                    status: status
+                )
+                if translations
+                    translations
                 else
                     nil
                 end
