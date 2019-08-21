@@ -30,7 +30,7 @@ kr = Language.create(name: "한국어", short_name: "한")
 intermediate = Difficulty.create(level: 5, description: "Intermediate")
 
 m_lang_en = KnownLanguage.create(user_id: matt.id, difficulty_id: intermediate.id, language_id: en.id, vetted: true)
-m_lang_kr = KnownLanguage.create(user_id: matt.id, difficulty_id: intermediate.id, language_id: kr.id, vetted: false)
+m_lang_kr = KnownLanguage.create(user_id: matt.id, difficulty_id: intermediate.id, language_id: kr.id, vetted: true)
 
 s_lang_kr = KnownLanguage.create(user_id: seong.id, difficulty_id: intermediate.id, language_id: kr.id, vetted: true)
 

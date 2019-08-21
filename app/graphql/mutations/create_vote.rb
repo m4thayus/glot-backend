@@ -8,11 +8,23 @@ module Mutations
         type Types::VoteType
 
         def resolve(up: nil, translation_id: nil)
-            Vote.create!(
+            vote = Vote.create!(
                 up: up,
                 user_id: context[:current_user].id,
                 translation_id: translation_id
             )
+
+            translation = Translation.find_by(id: translation_id)
+            up_votes = translation.votes.select{ |vote| vote.up == true}
+            down_votes = translation.votes.select{ |vote| vote.down == false}
+
+            if (up_votes.length - down_votes.length == 3) 
+                translation.update(status: 'complete')
+                translation.text.update(status: 'complete')
+            end
+
+            return vote
+
         end
     end
 end
