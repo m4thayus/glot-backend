@@ -16,7 +16,7 @@ module Mutations
 
             translation = Translation.find_by(id: translation_id)
             up_votes = translation.votes.select{ |vote| vote.up == true}
-            down_votes = translation.votes.select{ |vote| vote.down == false}
+            down_votes = translation.votes.select{ |vote| vote.up == false}
 
             if (up_votes.length - down_votes.length == 3) 
                 translation.update(status: 'complete')
