@@ -6,5 +6,6 @@ module Types
         field :update_translation, mutation: Mutations::UpdateTranslation
         field :create_text, mutation: Mutations::CreateText
         field :create_known_language, mutation: Mutations::CreateKnownLanguage
+        field :create_vote, mutation: Mutations::CreateVote
     end
 end

@@ -3,5 +3,6 @@ module Types
         field :id, ID, null: false
         field :up, Boolean, null: false
         field :translation, TranslationType, null: false
+        field :user, UserType, null: false
     end
 end
