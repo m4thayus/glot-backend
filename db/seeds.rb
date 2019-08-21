@@ -27,7 +27,9 @@ mina = User.create(username: "mina", password: "password",  first_name: "민아"
 en = Language.create(name: "English", short_name: "EN")
 kr = Language.create(name: "한국어", short_name: "한")
 
-intermediate = Difficulty.create(level: 5, description: "Intermediate")
+basic = Difficulty.create(level: 2, description: "Basic")
+intermediate = Difficulty.create(level: 4, description: "Intermediate")
+advanced = Difficulty.create(level: 6, description: "Advanced")
 
 m_lang_en = KnownLanguage.create(user_id: matt.id, difficulty_id: intermediate.id, language_id: en.id, vetted: true)
 m_lang_kr = KnownLanguage.create(user_id: matt.id, difficulty_id: intermediate.id, language_id: kr.id, vetted: true)
