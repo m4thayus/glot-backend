@@ -11,7 +11,8 @@ module Mutations
             KnownLanguage.create!(
                 user_id: context[:current_user].id,
                 language_id: language_id,
-                difficulty_id: difficulty_id
+                difficulty_id: difficulty_id,
+                vetted: false
             )
         end
     end
