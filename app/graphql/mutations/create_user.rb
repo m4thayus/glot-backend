@@ -20,6 +20,9 @@ module Mutations
                 username: auth_provider&.[](:username)&.[](:username),
                 password: auth_provider&.[](:username)&.[](:password)
             )       
+
+            ## Replace this with a non-default, user defined choice 
+            ## Set default known language
             eng = Language.find_by(name: "English")
             int = Difficulty.find_by(level: 5)
             KnownLanguage.create!(
@@ -28,10 +31,9 @@ module Mutations
                 language_id: eng.id,
                 difficulty_id: int.id
             )
+
             crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
             token = crypt.encrypt_and_sign("user-id:#{ user.id }")
-
-            # context[:session][:token] = token
 
             { token: token }
         end
