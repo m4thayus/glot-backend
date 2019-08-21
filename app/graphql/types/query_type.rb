@@ -28,9 +28,7 @@ module Types
                     nil
                 end
             elsif status
-                translations = Translation.find_all(
-                    status: status
-                )
+                translations = Translation.select{ |translation| translation.status == status }
                 if translations
                     translations
                 else
