@@ -20,6 +20,14 @@ module Mutations
                 username: auth_provider&.[](:username)&.[](:username),
                 password: auth_provider&.[](:username)&.[](:password)
             )       
+            eng = Language.find_by(name: "English")
+            int = Difficulty.find_by(level: 5)
+            KnownLanguage.create!(
+                vetted: false,
+                user_id: user.id,
+                language_id: eng.id,
+                difficulty_id: int.id
+            )
             crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
             token = crypt.encrypt_and_sign("user-id:#{ user.id }")
 
