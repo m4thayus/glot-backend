@@ -8,7 +8,6 @@ module Mutations
         type Types::VoteType
 
         def resolve(up: nil, translation_id: nil)
-            byebug
             Vote.create!(
                 up: up,
                 user_id: context[:current_user].id,
