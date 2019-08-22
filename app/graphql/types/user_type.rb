@@ -8,5 +8,9 @@ module Types
         field :translations, [TranslationType], null: false
         field :languages, [LanguageType], null: false
         field :known_languages, [KnownLanguageType], null: false
+
+        def languages
+            object.languages.uniq
+        end
     end
 end
