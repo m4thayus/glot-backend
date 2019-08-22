@@ -31,13 +31,21 @@ basic = Difficulty.create(level: 2, description: "Basic")
 intermediate = Difficulty.create(level: 4, description: "Intermediate")
 advanced = Difficulty.create(level: 6, description: "Advanced")
 
-m_lang_en = KnownLanguage.create(user_id: matt.id, difficulty_id: intermediate.id, language_id: en.id, vetted: true)
-m_lang_kr = KnownLanguage.create(user_id: matt.id, difficulty_id: intermediate.id, language_id: kr.id, vetted: true)
+m_lang_en_bas = KnownLanguage.create(user_id: matt.id, difficulty_id: basic.id, language_id: en.id, vetted: true)
+m_lang_en_int = KnownLanguage.create(user_id: matt.id, difficulty_id: intermediate.id, language_id: en.id, vetted: true)
+m_lang_en_adv = KnownLanguage.create(user_id: matt.id, difficulty_id: advanced.id, language_id: en.id, vetted: true)
+m_lang_kr_bas = KnownLanguage.create(user_id: matt.id, difficulty_id: basic.id, language_id: kr.id, vetted: true)
+m_lang_kr_int = KnownLanguage.create(user_id: matt.id, difficulty_id: intermediate.id, language_id: kr.id, vetted: true)
 
-s_lang_kr = KnownLanguage.create(user_id: seong.id, difficulty_id: intermediate.id, language_id: kr.id, vetted: true)
+s_lang_kr_bas = KnownLanguage.create(user_id: seong.id, difficulty_id: basic.id, language_id: kr.id, vetted: true)
+s_lang_kr_int = KnownLanguage.create(user_id: seong.id, difficulty_id: intermediate.id, language_id: kr.id, vetted: true)
 
-mi_lang_en = KnownLanguage.create(user_id: mina.id, difficulty_id: intermediate.id, language_id: en.id, vetted: true)
-mi_lang_kr = KnownLanguage.create(user_id: mina.id, difficulty_id: intermediate.id, language_id: kr.id, vetted: true)
+mi_lang_en_bas = KnownLanguage.create(user_id: mina.id, difficulty_id: basic.id, language_id: en.id, vetted: true)
+mi_lang_en_int = KnownLanguage.create(user_id: mina.id, difficulty_id: intermediate.id, language_id: en.id, vetted: true)
+mi_lang_en_adv = KnownLanguage.create(user_id: mina.id, difficulty_id: advanced.id, language_id: en.id, vetted: true)
+mi_lang_kr_bas = KnownLanguage.create(user_id: mina.id, difficulty_id: basic.id, language_id: kr.id, vetted: true)
+mi_lang_kr_int = KnownLanguage.create(user_id: mina.id, difficulty_id: intermediate.id, language_id: kr.id, vetted: true)
+mi_lang_kr_adv = KnownLanguage.create(user_id: mina.id, difficulty_id: advanced.id, language_id: kr.id, vetted: true)
 
 flag_text = Text.create(
     title: "기", 
