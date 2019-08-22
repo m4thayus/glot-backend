@@ -23,6 +23,7 @@ solar_en = "A solar eclipse occurs when a portion of the Earth is engulfed in a 
 matt = User.create(username: "m4thayus", password: "password", first_name: "Matt", last_name: "Williams")
 seong = User.create(username: "seong", password: "password",  first_name: "성준", last_name: "신")
 mina = User.create(username: "mina", password: "password",  first_name: "민아", last_name: "박")
+demo = User.create(username: "demo", password: "123", first_name: "Example", last_name: "User")
 
 en = Language.create(name: "English", short_name: "EN")
 kr = Language.create(name: "한국어", short_name: "한")
@@ -46,6 +47,8 @@ mi_lang_en_adv = KnownLanguage.create(user_id: mina.id, difficulty_id: advanced.
 mi_lang_kr_bas = KnownLanguage.create(user_id: mina.id, difficulty_id: basic.id, language_id: kr.id, vetted: true)
 mi_lang_kr_int = KnownLanguage.create(user_id: mina.id, difficulty_id: intermediate.id, language_id: kr.id, vetted: true)
 mi_lang_kr_adv = KnownLanguage.create(user_id: mina.id, difficulty_id: advanced.id, language_id: kr.id, vetted: true)
+
+demo_lang_en_bas = KnownLanguage.create(user_id: demo.id, difficulty_id: basic.id, language_id: en.id, vetted: false)
 
 flag_text = Text.create(
     title: "기", 
@@ -84,7 +87,3 @@ solar_translation = Translation.create(
     translator_id: mina.id,
     text_id: solar_text.id
 )
-
-
-
-# flag_vote1 = Vote.create(up: true, user_id: mina.id, translation_id: flag_translation.id)
