@@ -9,8 +9,8 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     origins 'glot.conceptualsoup.blog'
 
-    resource '*',
+    resource '/graphql',
       headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      methods: :post #[:get, :post, :put, :patch, :delete, :options, :head]
   end
 end
